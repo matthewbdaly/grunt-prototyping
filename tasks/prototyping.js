@@ -103,7 +103,12 @@ module.exports = function(grunt) {
         var meta = md.meta;
 
         // Set permalink
-        var permalink = '/' + (file.replace(options.src.pages, '').replace('.markdown', '').replace('.md', ''));
+        var permalink;
+        if (file.indexOf('index.md') > -1 || file.indexOf('index.markdown') > -1) {
+          permalink = '/';
+        } else {
+          permalink = '/' + (file.replace(options.src.pages, '').replace('.markdown', '').replace('.md', ''));
+        }
         var path = options.www.dest + permalink;
 
         // Render the Handlebars template with the content
@@ -125,7 +130,9 @@ module.exports = function(grunt) {
         var output = pageTemplate(data);
 
         // Write page to destination
-        grunt.file.mkdir(path);
+        if (permalink !== '/') {
+          grunt.file.mkdir(path);
+        }
         grunt.file.write(path + '/index.html', output);
     });
   });
