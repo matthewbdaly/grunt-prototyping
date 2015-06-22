@@ -135,6 +135,18 @@ module.exports = function(grunt) {
         }
         grunt.file.write(path + '/index.html', output);
     });
+
+    // Create 404 page
+    var newObj = {
+      data: options.data,
+      year: options.year,
+      domain: options.domain
+    };
+    var output = notFoundTemplate(newObj);
+    var path = options.www.dest;
+    grunt.file.mkdir(path);
+    grunt.file.write(path + '/404.html', output);
+
   });
 
 };

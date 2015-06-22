@@ -48,8 +48,7 @@ module.exports = function(grunt) {
             header: 'templates/partials/header.hbs',
             footer: 'templates/partials/footer.hbs',
             sidebar: 'templates/partials/sidebar.hbs',
-            notfound: 'templates/404.hbs',
-            robots: 'templates/robots.txt'
+            notfound: 'templates/404.hbs'
           },
           src: {
             pages: 'content/'
