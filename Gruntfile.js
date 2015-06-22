@@ -49,12 +49,11 @@ module.exports = function(grunt) {
             header: 'templates/partials/header.hbs',
             footer: 'templates/partials/footer.hbs',
             sidebar: 'templates/partials/sidebar.hbs',
-            archive: 'templates/archive.hbs',
             notfound: 'templates/404.hbs',
             robots: 'templates/robots.txt'
           },
           src: {
-            pages: 'content/pages/'
+            pages: 'content/'
           },
           www: {
             dest: 'build'
