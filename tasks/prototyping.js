@@ -79,12 +79,19 @@ module.exports = function(grunt) {
     };
     MarkedMetadata.setOptions(mdoptions);
 
+    // Register partials
+    Handlebars.registerPartial({
+        header: grunt.file.read(options.template.header),
+        footer: grunt.file.read(options.template.footer),
+        sidebar: grunt.file.read(options.template.sidebar)
+    });
+
     // Get matching files
-    pages = grunt.file.expand(options.src.pages + '*.md', options.src.pages + '*.markdown');
+    var pages = grunt.file.expand(options.src.pages + '*.md', options.src.pages + '*.markdown');
 
     // Get Handlebars templates
-    pageTemplate = Handlebars.compile(grunt.file.read(options.template.page));
-    notFoundTemplate = Handlebars.compile(grunt.file.read(options.template.notfound));
+    var pageTemplate = Handlebars.compile(grunt.file.read(options.template.page));
+    var notFoundTemplate = Handlebars.compile(grunt.file.read(options.template.notfound));
 
     // Generate pages and add them to the index
     var file;
@@ -113,10 +120,9 @@ module.exports = function(grunt) {
             post: {
                 content: mdcontent,
                 rawcontent: content
-            },
-            recent_posts: recent_posts
+            }
         };
-        output = pageTemplate(data);
+        var output = pageTemplate(data);
 
         // Write page to destination
         grunt.file.mkdir(path);
