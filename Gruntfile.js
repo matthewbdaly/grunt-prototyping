@@ -30,20 +30,35 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     prototyping: {
-      default_options: {
+      default: {
         options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+          data: {
+            author: "My Name",
+            url: "http://www.example.com",
+            email: "user@example.com",
+            googleanalytics: "UA-XXXXX-X",
+            title: 'My new site',
+            description: 'A website',
+            keywords: [
+              'my',
+              'blog'
+            ]
+          },
+          template: {
+            page: 'templates/page.hbs',
+            header: 'templates/partials/header.hbs',
+            footer: 'templates/partials/footer.hbs',
+            sidebar: 'templates/partials/sidebar.hbs',
+            archive: 'templates/archive.hbs',
+            notfound: 'templates/404.hbs',
+            robots: 'templates/robots.txt'
+          },
+          src: {
+            pages: 'content/pages/'
+          },
+          www: {
+            dest: 'build'
+          }
         }
       }
     },
